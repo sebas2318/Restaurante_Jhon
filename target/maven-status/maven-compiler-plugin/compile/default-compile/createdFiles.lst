@@ -1,0 +1,5 @@
+com\mycompany\restaurantejk\Restaurantejk.class
+com\restaurante\main\Principal.class
+com\restaurante\conexion\Conexion.class
+com\restaurante\modelo\Producto.class
+com\restaurante\dao\ProductoDAO.class
