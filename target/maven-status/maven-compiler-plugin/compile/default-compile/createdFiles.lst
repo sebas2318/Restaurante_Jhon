@@ -2,8 +2,9 @@ com\mycompany\restaurantejk\Restaurantejk.class
 com\restaurante\conexion\Conexion.class
 com\restaurante\controlador\PedidoServlet.class
 com\restaurante\controlador\ProductoServlet.class
-com\restaurante\modelo\Pedido.class
+com\restaurante\conexion\Hash.class
 com\restaurante\modelo\Usuario.class
+com\restaurante\controlador\LoginServlet.class
 com\restaurante\main\Principal.class
 com\restaurante\controlador\InventarioServlet.class
 com\restaurante\modelo\Producto.class
