@@ -2,25 +2,23 @@ package com.restaurante.conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Conexion {
-    private static final String URL = "jdbc:mysql://localhost:3306/restaurantejk";
-    private static final String USER = "root";
-    private static final String PASS = "";     
+    private final String baseDatos = "restaurantejk"; // Asegúrate que coincida con tu DB
+    private final String url = "jdbc:mysql://localhost:3306/" + baseDatos + "?serverTimezone=UTC";
+    private final String usuario = "root";
+    private final String clave = "";
 
-    public Connection conectar() {
-    Connection con = null;
-    try {
-        // Esta línea le dice a Java: "Usa el traductor de MySQL"
-        Class.forName("com.mysql.cj.jdbc.Driver"); 
-        
-        con = DriverManager.getConnection(URL, USER, PASS);
-        System.out.println("✅ ¡Conexión exitosa!");
-    } catch (ClassNotFoundException e) {
-        System.out.println("❌ No se encontró el Driver: " + e.getMessage());
-    } catch (Exception e) {
-        System.out.println("❌ Error: " + e.getMessage());
+    public Connection getConexion() {
+        Connection cn = null;
+        try {
+            // Carga del driver necesario para aplicaciones web PHP/Java 
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            cn = DriverManager.getConnection(url, usuario, clave);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Error en la conexión a la base de datos: " + e.getMessage());
+        }
+        return cn;
     }
-    return con;
-}
 }
