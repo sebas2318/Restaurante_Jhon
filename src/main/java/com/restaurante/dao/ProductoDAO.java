@@ -1,3 +1,6 @@
+/**
+ * Clase ProductoDAO: Implementa el patrón Data Access Object.
+ */
 package com.restaurante.dao;
 
 import com.restaurante.conexion.Conexion;
@@ -10,7 +13,10 @@ import java.util.List;
 
 public class ProductoDAO {
 
-    // HU-01: Tomar pedido (Descontar stock Y registrar el pedido en DB)
+    /**
+     *RF01: Tomar Pedido.
+     *Mesero solicita productos y descuenta stock.
+     */
     public boolean descontarStock(int idProducto, int cantidad, String mesa) {
         String sqlUpdate = "UPDATE productos SET stock = stock - ? WHERE id = ? AND stock >= ?";
         String sqlInsert = "INSERT INTO pedido (mesa, id_producto, cantidad) VALUES (?, ?, ?)";
@@ -49,7 +55,10 @@ public class ProductoDAO {
             try { if (con != null) con.close(); } catch (Exception e) { e.printStackTrace(); }
         }
     }
-
+     /**
+     *RF05: Registrar Producto.
+     * Administrador registra un nuevo producto a el inventario
+     */
     public boolean guardarProducto(Producto p) {
         String sql = "INSERT INTO productos (nombre, precio, stock) VALUES (?, ?, ?)";
         try (Connection con = new Conexion().getConexion();
@@ -63,7 +72,10 @@ public class ProductoDAO {
             return false;
         }
     }
-
+    /**
+     *RF06: Ver inventario.
+     * Administrador podra ver y gestionar el inventario.
+     */
     public List<Producto> listarProductos() {
         List<Producto> lista = new ArrayList<>();
         String sql = "SELECT * FROM productos";

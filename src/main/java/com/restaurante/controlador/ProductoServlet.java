@@ -1,3 +1,6 @@
+/**
+ * Controlador encargado de conectarse con registroProducto.xhtml
+ */
 package com.restaurante.controlador;
 
 import com.restaurante.dao.ProductoDAO;
@@ -16,7 +19,7 @@ public class ProductoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        try {
+            try {
             String nombre = request.getParameter("txtNombre");
             double precio = Double.parseDouble(request.getParameter("txtPrecio"));
             int stock = Integer.parseInt(request.getParameter("txtStock"));

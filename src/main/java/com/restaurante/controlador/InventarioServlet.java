@@ -1,3 +1,6 @@
+/**
+ * Controlador encargado de conectarse con verInventario.jsp
+ */
 package com.restaurante.controlador;
 
 import com.restaurante.dao.ProductoDAO;

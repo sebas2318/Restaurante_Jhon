@@ -1,3 +1,6 @@
+/**
+ * Controlador encargado de conectarse con registrarPedido.jsp
+ */
 package com.restaurante.controlador;
 
 import com.restaurante.dao.ProductoDAO;
