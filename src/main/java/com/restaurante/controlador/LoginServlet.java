@@ -36,7 +36,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 response.sendRedirect("registrarPedido.jsp");
                 break;
             case "Cocinero":
-                response.sendRedirect("pedidosCocina.jsp");
+                response.sendRedirect("CocinaServlet");
                 break;
             default:
                 response.sendRedirect("login.jsp?error=1");
@@ -44,6 +44,23 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         }
     } else {
         response.sendRedirect("login.jsp?error=1");
+    }
+}
+
+@Override
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    
+    String logout = request.getParameter("logout");
+    if (logout != null && logout.equals("true")) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate(); // Destruye la sesión del usuario
+        }
+        response.sendRedirect("login.jsp"); // Regresa al inicio
+    } else {
+        // Si entran por URL sin logout, mandarlos al login por seguridad
+        response.sendRedirect("login.jsp");
     }
 }
 }

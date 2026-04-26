@@ -45,8 +45,9 @@
     </table>
     
     <p style="text-align: center;">
-        <a href="registroProducto.xhtml">Agregar más productos</a> | 
-        <a href="registrarPedido.jsp">Ir a tomar Pedidos</a>
+        <a href="registroProducto.xhtml">Agregar más productos</a>
+        <a href="LoginServlet?logout=true">Cerrar Sesión</a>
+        <a href="cierreCaja.jsp">Cierre de caja</a>
     </p>
 </body>
 </html>

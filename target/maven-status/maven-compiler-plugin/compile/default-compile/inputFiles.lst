@@ -2,12 +2,15 @@ C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\my
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\conexion\Conexion.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\conexion\Hash.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\controlador\CocinaServlet.java
+C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\controlador\GastoServlet.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\controlador\InventarioServlet.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\controlador\LoginServlet.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\controlador\PedidoServlet.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\controlador\ProductoServlet.java
+C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\dao\PedidoDAO.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\dao\ProductoDAO.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\dao\UsuarioDAO.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\main\Principal.java
+C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\modelo\Pedido.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\modelo\Producto.java
 C:\Users\Sebastian\Documents\NetBeansProjects\restaurantejk\src\main\java\com\restaurante\modelo\Usuario.java

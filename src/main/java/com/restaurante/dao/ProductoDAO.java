@@ -18,43 +18,47 @@ public class ProductoDAO {
      *Mesero solicita productos y descuenta stock.
      */
     public boolean descontarStock(int idProducto, int cantidad, String mesa) {
-        String sqlUpdate = "UPDATE productos SET stock = stock - ? WHERE id = ? AND stock >= ?";
-        String sqlInsert = "INSERT INTO pedido (mesa, id_producto, cantidad) VALUES (?, ?, ?)";
         
-        Connection con = null;
-        try {
-            con = new Conexion().getConexion();
-            con.setAutoCommit(false);
+    String sqlUpdate = "UPDATE productos SET stock = stock - ? WHERE id = ? AND stock >= ?";
+    
+    String sqlInsert = "INSERT INTO pedido (mesa, id_producto, cantidad, total, estado, fecha) " +
+                       "SELECT ?, ?, ?, (precio * ?), 'Pendiente', CURRENT_TIMESTAMP " +
+                       "FROM productos WHERE id = ?";
+    
+    Connection con = null;
+    try {
+        con = new Conexion().getConexion();
+        con.setAutoCommit(false);
 
-            try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
-                psUpdate.setInt(1, cantidad);
-                psUpdate.setInt(2, idProducto);
-                psUpdate.setInt(3, cantidad);
-                
-                int filasActualizadas = psUpdate.executeUpdate();
-                
-                if (filasActualizadas > 0) {
-                    try (PreparedStatement psInsert = con.prepareStatement(sqlInsert)) {
-                        psInsert.setString(1, mesa);
-                        psInsert.setInt(2, idProducto);
-                        psInsert.setInt(3, cantidad);
-                        psInsert.executeUpdate();
-                    }
-                    con.commit();
-                    return true;
-                } else {
-                    con.rollback();
-                    return false;
+        try (PreparedStatement psUpdate = con.prepareStatement(sqlUpdate)) {
+            psUpdate.setInt(1, cantidad);
+            psUpdate.setInt(2, idProducto);
+            psUpdate.setInt(3, cantidad);
+            
+            if (psUpdate.executeUpdate() > 0) {
+                try (PreparedStatement psInsert = con.prepareStatement(sqlInsert)) {
+                    psInsert.setString(1, mesa);
+                    psInsert.setInt(2, idProducto);
+                    psInsert.setInt(3, cantidad);
+                    psInsert.setInt(4, cantidad); // Para el cálculo (precio * ?)
+                    psInsert.setInt(5, idProducto); // Para encontrar el producto en el SELECT
+                    psInsert.executeUpdate();
                 }
+                con.commit();
+                return true;
+            } else {
+                con.rollback();
+                return false;
             }
-        } catch (Exception e) {
-            try { if (con != null) con.rollback(); } catch (Exception ex) { ex.printStackTrace(); }
-            e.printStackTrace();
-            return false;
-        } finally {
-            try { if (con != null) con.close(); } catch (Exception e) { e.printStackTrace(); }
         }
+    } catch (Exception e) {
+        try { if (con != null) con.rollback(); } catch (Exception ex) {}
+        e.printStackTrace();
+        return false;
+    } finally {
+        try { if (con != null) con.close(); } catch (Exception e) {}
     }
+}
      /**
      *RF05: Registrar Producto.
      * Administrador registra un nuevo producto a el inventario
